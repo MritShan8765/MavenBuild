@@ -1,0 +1,10 @@
+version: 0.2
+phases:
+  build:
+    commands:
+# compile java source code
+      - mvn compile
+# execute unit tests
+      - mvn test
+# create a deployable war file
+      - mvn package
