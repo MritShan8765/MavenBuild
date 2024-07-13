@@ -3,8 +3,8 @@ phases:
   build:
     commands:
 # compile java source code
-      - mvn compile
+      - mvn compile -B
 # execute unit tests
-      - mvn test
+      - mvn test -B
 # create a deployable war file
-      - mvn package
+      - mvn package -B
