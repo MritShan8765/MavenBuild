@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+# Compile and generate WAR file from source code
+    - mvn package -B
+# build docker image
+    - docker build . -t $DOCKER_USER/course-end-image:v1
+    - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USER --password-stdin
+# push docker image to dockerhub
+    - docker push $DOCKER_USER/course-end-image:v1
+    - aws eks update-kubeconfig --name course-end-cluster
+# apply deployment to EKS
+    - kubectl apply -f deployment.yaml
