@@ -13,3 +13,5 @@ artifacts:
   files:
   - ROOT.war
   discard-paths: yes
+  name: $(date +%Y-%m-%d)
+  base-directory: .
